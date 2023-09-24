@@ -3,21 +3,26 @@ import time
 import keyboard
 import pyautogui
 import threading
+
 firstTime = True
 global loop
-loop = True
+loop = True # start eller stopper programmet
+
+#def settings gui
+
 root = tk.Tk()
 root.geometry("300x200")
 root.title("BassarHotkey")
-icon = tk.PhotoImage(file="logo.png")
+icon = tk.PhotoImage(file="img/logo.png")
 root.iconphoto(False, icon)
 root.configure(bg="#222021")
 
-def starttwo():
+#GUI loop på start
+def startMainLoop():
     global loop
     while loop:
         if keyboard.is_pressed("enter"):
-            temp = pyautogui.locateOnScreen("hentet.png")
+            temp = pyautogui.locateOnScreen("img/hentet.png")
             if temp:
                 res = pyautogui.center(temp)
                 pyautogui.moveTo(res)
@@ -25,7 +30,7 @@ def starttwo():
                 time.sleep(0.1)
                 pyautogui.click()
             else:
-                temp2 = pyautogui.locateOnScreen("trekk.png")
+                temp2 = pyautogui.locateOnScreen("img/trekk.png")
                 if temp2:
                     res = pyautogui.center(temp2)
                     pyautogui.moveTo(res)
@@ -36,13 +41,13 @@ def starttwo():
                 else:
                     onOff.config(text="Bilde ble ikke funnet", fg="yellow")
 
-
+#start og stop func for knappene
 def start():
     global loop
     loop = True
     onOff.config(text="AKTIV", fg="#00bfff", font=("Roboto", 12, "bold"))
     onOff.grid(column=0, row=2, columnspan=2, pady=10)
-    threading.Thread(target=starttwo, daemon=True).start()
+    threading.Thread(target=startMainLoop, daemon=True).start()
     stopButton["state"] = tk.NORMAL
     startButton["state"] = tk.DISABLED
 
@@ -54,6 +59,7 @@ def stop():
     stopButton["state"] = tk.DISABLED
     startButton["state"] = tk.NORMAL
 
+#Generelt GUI
 title = tk.Label(root, text="Hotkeybassar", font=("roboto", 10, "bold"), bg="#222021", fg="white")
 title.grid(column=0, row=0, columnspan=2, pady=10)
 
@@ -68,10 +74,11 @@ startButton.grid(column=0, row=3)
 stopButton = tk.Button(root, text="stop", command=stop, padx=40, bg="#222021", fg="white")
 stopButton.grid(column=1, row=3)
 
+#setter programmet av til å starte med
 if firstTime:
     firstTime = False
     stop()
-
+#deler opp skjermen i deler for elimenter
 root.rowconfigure(3)
 root.columnconfigure(2)
 root.mainloop()
