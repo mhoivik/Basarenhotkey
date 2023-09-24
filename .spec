@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['/home/hoivik/Desktop/Martin/Koding/Python/Bassarhotkeytrekk/verson3/'],
+    ['/home/hoivik/Desktop/Martin/Koding/Python/Bassarhotkeytrekk/BasarenHotKey/'],
     pathex=[],
     binaries=[],
     datas=[],
