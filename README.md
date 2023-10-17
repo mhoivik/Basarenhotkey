@@ -5,4 +5,4 @@ Du åpen basaren.net sin app på pc og kjører programmet mitt. Trykk på ny tre
 
 
 Hvordan installere:
-Du laster ned hele mappen. Deretter åpner du mappen og velger filen som ender med .exe. 
+Last ned programmet og kjør filen som heter "main.py"
